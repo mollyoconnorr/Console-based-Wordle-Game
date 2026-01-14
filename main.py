@@ -174,11 +174,16 @@ def game_loop():
     """
     # made from list of more common words, used to pick the word
     secret_word = word_getter(read_word_file("words.txt"))
-    # made from a larger set of all five-letter words, this is used to check if they entered a valid word
+
+    # Made from a larger set of all five-letter words, this is used to check if they entered a valid word
     word_list = read_word_file("complex_words.txt")
+    word_list2 = read_word_file("words.txt")
+    # Merge the word lists and remove duplicates to create a master list of valid guesses
+    combined_words = list(set(word_list + word_list2))
+
     attempts = 6
     while attempts > 0:
-        guess = valid_guess(word_list)
+        guess = valid_guess(combined_words)
         attempts -=1
         check_letters(secret_word, guess)
         if guess == secret_word:
