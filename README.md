@@ -35,20 +35,31 @@ python main.py
 ```
 ---
 
-## Interesting Feature
+## Interesting Feature: Dual Word Lists
 
-This Wordle game uses **two separate word lists** to enhance gameplay and accuracy:
+This Wordle game uses **two separate word lists** to enhance gameplay and ensure accurate validation:
 
-1. **Validation List** – A list of **5,757 five-letter words** used for validation of guesses.  
-   - These words were originally used by Donald Knuth for demonstrations of the **Stanford Graph Base (SGB)**.  
-   - This ensures that player guesses are **real English words** recognized in the dataset.
+### Validation List
+- **Size:** 16,153 five-letter words (from `wordlist.txt`)  
+- **Purpose:** Used to validate player guesses.  
+- **Subset:** 5,757 words originally used by Donald Knuth in the **Stanford Graph Base (SGB)**.  
+  - Ensures that guesses are **real English words** recognized in the dataset.  
+- **Source files:**  
+  - `complex_words.txt` — larger set of five-letter words for validation.  
+  - `words.txt` — more common words included to cover everyday vocabulary.  
 
-2. **Answer List** – A smaller list of **2,309 five-letter English words**, in alphabetical order, used as possible answers for the game.  
-   - These words are selected as potential secret words in the game Wordle.  
+### Answer List
+- **Size:** Subset of `words.txt`, containing more common five-letter words.  
+- **Purpose:** Used as potential **secret words** in the game.  
+- Randomly selected to ensure that the secret word is guessable and keeps gameplay fair.
 
-Both datasets were sourced from the same website: [https://people.sc.fsu.edu/~jburkardt/datasets/words/words.html](https://people.sc.fsu.edu/~jburkardt/datasets/words/words.html)  
+### Why Two Lists?
+Separating **valid guesses** from **possible answers** allows the game to:  
+1. Validate player input against a comprehensive dictionary without limiting potential secret words.  
+2. Ensure that secret words are reasonably guessable, improving gameplay experience.  
 
-By separating **valid guesses** from **possible answers**, the game can validate input without restricting the secret word pool, improving the gameplay experience.
+**Source:** Both datasets were originally obtained from [J. Burkardt's Word List](https://people.sc.fsu.edu/~jburkardt/datasets/words/words.html)
+
 
 
 ## Challenge: Handling Repeated Letters
