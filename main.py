@@ -186,7 +186,6 @@ def game_loop():
     """
     # Made from list of more common words, used to pick the secret word
     secret_word = word_getter(read_word_file("words.txt"))
-    print(secret_word)
 
     # Made from a larger set of all five-letter words, this is used to check if they entered a valid word
     word_list = read_word_file("complex_words.txt")
